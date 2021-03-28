@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArkSE.ServerPage"
+             xmlns:pages="clr-namespace:ArkSE"
+             x:Name="ServerPageT">
+
+    <StackLayout BindingContext="{Binding Source={x:Reference ServerPageT}, Path=Server}">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}"/>
+        </StackLayout>
+        <Label Text="{Binding Map}"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Players"/>
+            <Label Text="{Binding PlayerCount}"/>
+            <Label Text="/"/>
+            <Label Text="{Binding MaximumPlayerCount}"/>
+        </StackLayout>
+
+        <ListView ItemsSource="{Binding Players}"/>
+    </StackLayout>
+
+</ContentPage>
