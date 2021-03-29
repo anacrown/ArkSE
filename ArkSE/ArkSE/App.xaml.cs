@@ -30,7 +30,7 @@ namespace ArkSE
         {
             SettingService.Init(this);
             DialogService.Init(this);
-            DataServices.Init(true);
+            DataServices.Init(false);
             await NavigationService.Init(Pages.Login);
         }
 

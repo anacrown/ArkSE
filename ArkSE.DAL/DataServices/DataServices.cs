@@ -1,4 +1,5 @@
 using System;
+using ArkSE.DAL.DataServices.Online;
 
 namespace ArkSE.DAL.DataServices {
 	public static class DataServices {
@@ -13,11 +14,11 @@ namespace ArkSE.DAL.DataServices {
 				// Hotel = new Mock.HotelDataService();
 			}
 			else {
-				throw new NotImplementedException("Online Data Services not implemented");
+				OfficialServersDataService = new OfficialServersDataService();
 			}
 		}
 
-		// public static IServicesDataService Services { get; private set; }
+		public static IOfficialServersDataService OfficialServersDataService { get; private set; }
 		// public static IProfileDataService Profile { get; private set; }
 		// public static IFitnessDataService Fitness { get; private set; }
 		// public static IRestaurantDataService Restaurant { get; private set; }

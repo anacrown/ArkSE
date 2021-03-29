@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using ArkSE.DAL.DataObjects;
 using Xamarin.Forms;
 
 namespace ArkSE.Helpers
 {
 	public static class SettingService
 	{
-		static readonly object _locker = new object();
+		static readonly object Locker = new object();
 		static Func<IDictionary<string, object>> _settingsFunc;
 		static Func<Task> _saveFunc;
 		static IDictionary<string, object> Settings => _settingsFunc?.Invoke();
@@ -17,11 +19,16 @@ namespace ArkSE.Helpers
 		{
 			_settingsFunc = ()=> app.Properties;
 			_saveFunc = app.SavePropertiesAsync;
-		}
 
-		public static string HotelId
+			FavServers ??= new ObservableCollection<OfficialServerObject>();
+
+            FavServers.CollectionChanged += (sender, args) =>
+                Set(FavServers, nameof(FavServers));
+        }
+
+		public static ObservableCollection<OfficialServerObject> FavServers
 		{
-			get => Get<string>();
+			get => Get<ObservableCollection<OfficialServerObject>>();
 			set => Set(value);
 		}
 
@@ -29,7 +36,7 @@ namespace ArkSE.Helpers
 
 		static T Get<T>([CallerMemberNameAttribute] string key = null)
 		{
-			lock (_locker)
+			lock (Locker)
 			{
 				var settings = Settings;
 				if (settings.TryGetValue(key, out var value))
@@ -43,7 +50,7 @@ namespace ArkSE.Helpers
 
 		static void Set<T>(T value,[CallerMemberNameAttribute] string key = null)
 		{
-			lock (_locker)
+			lock (Locker)
 			{
 				var settings = Settings;
 				if (settings.ContainsKey(key))
@@ -51,10 +58,11 @@ namespace ArkSE.Helpers
 				else
 					settings.Add(key, value);
 			}
+
 			Task.Run(()=>_saveFunc?.Invoke());
 		}
 
-		#endregion
+        #endregion
 
 
 

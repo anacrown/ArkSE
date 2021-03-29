@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE" 
-             xmlns:login="clr-namespace:ArkSE.BL.ViewModels.Login" 
-             x:DataType="login:LoginViewModel"
-             x:Class="ArkSE.UI.Pages.OfficialServers.OfficialServersPage">
+<pages:BasePage x:TypeArguments="officialservers:OfficialServersViewModel" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
+                xmlns:officialservers="clr-namespace:ArkSE.BL.ViewModels.OfficialServers"
+                xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
+                x:DataType="officialservers:OfficialServersViewModel"
+                x:Class="ArkSE.UI.Pages.OfficialServers.OfficialServersPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="OfficialServersPage"/>
-        </StackLayout>
+        <ListView ItemsSource="{Binding OfficialServers}"
+                  SelectionMode="None" ItemTapped="ListView_OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="dataObjects:OfficialServerObject">
+
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Ip}"/>
+                                <Label Text="["/>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="]"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </pages:BasePage>

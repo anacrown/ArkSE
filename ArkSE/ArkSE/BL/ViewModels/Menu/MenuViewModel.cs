@@ -17,7 +17,7 @@ namespace ArkSE.BL.ViewModels.Menu
 		   //  set => Set(value);
 	    // }
 		static ICommand MakeMenuCommand(object page) {
-			return MakeNavigateToCommand(page, NavigationMode.RootPage, newNavigationStack: true, withAnimation: false);
+			return MakeNavigateToCommand(page, NavigationMode.Master, newNavigationStack: true, withAnimation: false);
 		}
 
 		// protected override async Task LoadDataAsync()

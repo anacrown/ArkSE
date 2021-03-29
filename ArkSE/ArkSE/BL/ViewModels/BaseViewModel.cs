@@ -29,7 +29,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ArkSE.Helpers;
 using ArkSE.UI;
-using OrderKingCoreDemo.Helpers;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
