@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using RestSharp;
 using System.Threading;
 using System.Threading.Tasks;
 using ArkSE.DAL.DataObjects;
+using SourceQuery;
 
 namespace ArkSE.DAL.DataServices.Online
 {
@@ -42,6 +44,66 @@ namespace ArkSE.DAL.DataServices.Online
             catch (Exception e)
             {
                 return new RequestResult<List<OfficialServerObject>>(null, RequestStatus.InternalServerError, e.Message);
+            }
+        }
+
+        public Task<RequestResult<List<OfficialGameServerObject>>> GetOfficialGameServerObjects(
+            OfficialServerObject serverObject, CancellationToken cts)
+        {
+            return GetOfficialGameServerObjectsAsync(serverObject, cts);
+        }
+
+        private async Task<RequestResult<List<OfficialGameServerObject>>> GetOfficialGameServerObjectsAsync(
+            OfficialServerObject serverObject, CancellationToken cts)
+        {
+            try
+            {
+                var gameServerObjects = new List<OfficialGameServerObject>();
+                foreach (var port in Ports)
+                {
+                    if (cts.IsCancellationRequested)
+                        return new RequestResult<List<OfficialGameServerObject>>(null, RequestStatus.Canceled);
+
+                    if (TryCreateServer(serverObject.Ip, port, out var gameServer))
+                        gameServerObjects.Add(new OfficialGameServerObject()
+                        {
+                            Ip = serverObject.Ip,
+                            Port = gameServer.Port,
+                            Name = gameServer.Name,
+                            Map = gameServer.Map,
+                            PlayerCount = gameServer.PlayerCount,
+                            MaximumPlayerCount = gameServer.MaximumPlayerCount,
+                            GameVersion = gameServer.GameVersion,
+                            RequiresPassword = gameServer.RequiresPassword,
+                            OS = gameServer.OS.ToString(),
+                            ServerType = gameServer.ServerType.ToString(),
+                            SpectatorPort = gameServer.SpectatorPort,
+                            SteamId = gameServer.SteamId,
+                            VACSecured = gameServer.VACSecured
+                        });
+                }
+
+                return new RequestResult<List<OfficialGameServerObject>>(gameServerObjects, RequestStatus.Ok);
+            }
+            catch (Exception e)
+            {
+                return new RequestResult<List<OfficialGameServerObject>>(null, RequestStatus.InternalServerError, e.Message);
+            }
+        }
+
+        private static readonly int[] Ports = { 27015, 27017, 27019, 27021 };
+        
+        private bool TryCreateServer(string ip, int port, out GameServer gameServer)
+        {
+            try
+            {
+                gameServer = new GameServer(new IPEndPoint(IPAddress.Parse(ip), port));
+                return true;
+            }
+            catch (Exception)
+            {
+                gameServer = null;
+                return false;
             }
         }
     }

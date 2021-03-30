@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ArkSE.DAL.DataObjects
+﻿namespace ArkSE.DAL.DataObjects
 {
-    public class GameServerObject : BaseDataObject
+    public class OfficialGameServerObject : BaseDataObject
     {
+        public string Ip { get; set; }
+        public short Port { get; set; }
+        public short SpectatorPort { get; set; }
         public string Name { get; set; }
         public string Map { get; set; }
         public byte PlayerCount { get; set; }
@@ -16,5 +15,7 @@ namespace ArkSE.DAL.DataObjects
         public bool VACSecured { get; set; }
         public string GameVersion { get; set; }
         public string SteamId { get; set; }
+
+        public new string Id => $"{Ip}:{Port}";
     }
 }

@@ -2,10 +2,29 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sourceQuery="clr-namespace:SourceQuery;assembly=SourceQuery"
+             xmlns:officialServers="clr-namespace:ArkSE.BL.ViewModels.OfficialServers;assembly=ArkSE"
+             xmlns:officialServers1="clr-namespace:ArkSE.UI.Pages.OfficialServers;assembly=ArkSE"
              x:Class="ArkSE.App">
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate x:Key="OfficialServerObjectViewModelDataTemplate" x:DataType="officialServers:OfficialServerObjectViewModel">
 
+                <!-- <officialServers:View1/> -->
+
+                <officialServers1:OfficialServerObjectCell />
+
+                <!-- <ViewCell> -->
+                <!--     <ViewCell.View> -->
+                <!--         <StackLayout Orientation="Horizontal"> -->
+                <!--             <Label Text="{Binding Ip}"/> -->
+                <!--             <Label Text="["/> -->
+                <!--             <Label Text="{Binding Name}"/> -->
+                <!--             <Label Text="]"/> -->
+                <!--         </StackLayout> -->
+                <!--     </ViewCell.View> -->
+                <!-- </ViewCell> -->
+
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

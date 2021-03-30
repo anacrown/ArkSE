@@ -8,7 +8,6 @@ namespace ArkSE.BL.ViewModels.FavServers
 
         private void ServerInfoCommandImplementation()
         {
-            // SettingService.HotelId = "exampleHotelId";
             NavigateTo(Pages.ServerInfo, mode: NavigationMode.Modal);
         }
     }

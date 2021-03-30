@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using ArkSE.DAL.DataServices;
-using ArkSE.Helpers;
 
 namespace ArkSE.BL.ViewModels.Menu
 {

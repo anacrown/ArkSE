@@ -5,6 +5,30 @@ using Xamarin.Forms;
 
 namespace ArkSE.UI.Pages
 {
+    public class BaseElement : ViewCell, IDisposable
+    {
+        protected BaseViewModel BaseViewModel => BindingContext as BaseViewModel;
+
+		public void Dispose()
+        {
+			BaseViewModel?.Dispose();
+		}
+
+		protected override void OnParentSet()
+        {
+            base.OnParentSet();
+            if (Parent == null)
+                Dispose();
+            else
+                BaseViewModel?.StartLoadData();
+        }
+    }
+
+    public class BaseElement<T> : BaseElement where T : BaseViewModel
+	{
+        public T ViewModel => BaseViewModel as T;
+	}
+
 	public class BasePage : ContentPage, IDisposable {
 		protected BaseViewModel BaseViewModel => BindingContext as BaseViewModel;
 

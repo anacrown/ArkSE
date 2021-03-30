@@ -1,4 +1,5 @@
 using ArkSE.BL.ViewModels.ServerInfo;
+using Xamarin.Forms;
 
 namespace ArkSE.UI.Pages.ServerInfo
 {
@@ -8,5 +9,10 @@ namespace ArkSE.UI.Pages.ServerInfo
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
+        }
+    }
 }

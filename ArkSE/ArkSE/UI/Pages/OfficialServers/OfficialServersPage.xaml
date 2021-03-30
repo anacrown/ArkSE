@@ -5,27 +5,13 @@
                 xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
                 xmlns:officialservers="clr-namespace:ArkSE.BL.ViewModels.OfficialServers"
                 xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
+                xmlns:officialServers="clr-namespace:ArkSE.UI.Pages.OfficialServers;assembly=ArkSE"
                 x:DataType="officialservers:OfficialServersViewModel"
                 x:Class="ArkSE.UI.Pages.OfficialServers.OfficialServersPage">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding OfficialServers}"
+                  ItemTemplate="{StaticResource OfficialServerObjectViewModelDataTemplate}"
                   SelectionMode="None" ItemTapped="ListView_OnItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="dataObjects:OfficialServerObject">
-
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Ip}"/>
-                                <Label Text="["/>
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="]"/>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
         </ListView>
     </ContentPage.Content>
 </pages:BasePage>

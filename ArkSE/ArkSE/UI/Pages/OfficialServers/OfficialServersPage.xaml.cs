@@ -13,7 +13,7 @@ namespace ArkSE.UI.Pages.OfficialServers
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is OfficialServerObject server)
+            if (e.Item is OfficialServerObjectViewModel server)
                 ViewModel.ShowServerInfoCommandImplementation(server);
         }
     }

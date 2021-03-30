@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using ArkSE.DAL.DataServices;
+﻿using ArkSE.DAL.DataServices;
 using ArkSE.Helpers;
 using ArkSE.UI;
-using RestSharp;
-using SourceQuery;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ArkSE
 {

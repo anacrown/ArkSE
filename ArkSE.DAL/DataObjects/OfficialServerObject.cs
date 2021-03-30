@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ArkSE.DAL.DataObjects
+﻿namespace ArkSE.DAL.DataObjects
 {
     public class OfficialServerObject : BaseDataObject
     {

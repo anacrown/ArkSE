@@ -13,4 +13,8 @@
     <Folder Include="Resources\Mock\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ArkSE\SourceQuery\SourceQuery.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,12 +6,40 @@
                 xmlns:pages1="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE" 
                 xmlns:favservers="clr-namespace:ArkSE.BL.ViewModels.FavServers"
                 xmlns:serverInfo="clr-namespace:ArkSE.BL.ViewModels.ServerInfo;assembly=ArkSE"
-                x:DataType="favservers:FavServersViewModel" 
+                xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
+                x:DataType="serverInfo:ServerInfoViewModel"
                 x:Class="ArkSE.UI.Pages.ServerInfo.ServerInfoPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding }"/>
-            
-        </StackLayout>
+        <ListView ItemsSource="{Binding OfficialGameServerObjects}"
+                  SelectionMode="None" ItemTapped="ListView_OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="dataObjects:OfficialGameServerObject">
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="["/>
+                                    <Label Text="{Binding Map}"/>
+                                    <Label Text="]"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding PlayerCount}"/>
+                                    <Label Text="/"/>
+                                    <Label Text="{Binding MaximumPlayerCount}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="RequiresPassword:"/>
+                                    <Label Text="{Binding RequiresPassword}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </pages:BasePage>
