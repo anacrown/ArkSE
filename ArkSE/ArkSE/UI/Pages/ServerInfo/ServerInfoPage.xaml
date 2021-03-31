@@ -7,35 +7,70 @@
                 xmlns:favservers="clr-namespace:ArkSE.BL.ViewModels.FavServers"
                 xmlns:serverInfo="clr-namespace:ArkSE.BL.ViewModels.ServerInfo;assembly=ArkSE"
                 xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
+                xmlns:system="clr-namespace:System;assembly=netstandard"
                 x:DataType="serverInfo:ServerInfoViewModel"
                 x:Class="ArkSE.UI.Pages.ServerInfo.ServerInfoPage">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding OfficialGameServerObjects}"
-                  SelectionMode="None" ItemTapped="ListView_OnItemTapped">
+                  SelectionMode="None" ItemTapped="ListView_OnItemTapped"
+                  HasUnevenRows="True" VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="dataObjects:OfficialGameServerObject">
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout>
+                            <!-- <StackLayout> -->
+                            <!-- -->
+                            <!--     <StackLayout Orientation="Horizontal"> -->
+                            <!--         <Label Text="["/> -->
+                            <!--         <Label Text="{Binding Map}"/> -->
+                            <!--         <Label Text="]"/> -->
+                            <!--         <Label Text="{Binding Name}"/> -->
+                            <!--     </StackLayout> -->
+                            <!-- -->
+                            <!--     <StackLayout Orientation="Horizontal"> -->
+                            <!--         <Label Text="PlayerCount"/> -->
+                            <!--         <Label Text="{Binding PlayerCount}"/> -->
+                            <!--         <Label Text="/"/> -->
+                            <!--         <Label Text="{Binding MaximumPlayerCount}"/> -->
+                            <!--     </StackLayout> -->
+                            <!-- -->
+                            <!--     <StackLayout Orientation="Horizontal"> -->
+                            <!--         <Label Text="RequiresPassword:"/> -->
+                            <!--         <Label Text="{Binding RequiresPassword}"/> -->
+                            <!--     </StackLayout> -->
+                            <!-- -->
+                            <!--     <Label Text="{Binding OS}"/> -->
+                            <!-- -->
+                            <!-- </StackLayout> -->
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="["/>
-                                    <Label Text="{Binding Map}"/>
-                                    <Label Text="]"/>
-                                    <Label Text="{Binding Name}"/>
-                                </StackLayout>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="Map: "/><Span Text="{Binding Map}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="PlayerCount: "/>
+                                        <Span Text="{Binding PlayerCount}"/>
+                                        <Span Text="/"/>
+                                        <Span Text="{Binding MaximumPlayerCount}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="RequiresPassword: "/>
+                                        <Span Text="{Binding RequiresPassword}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="OS: "/>
+                                        <Span Text="{Binding OS}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="ServerType: "/>
+                                        <Span Text="{Binding ServerType}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="SteamId: "/>
+                                        <Span Text="{Binding SteamId}"/>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding PlayerCount}"/>
-                                    <Label Text="/"/>
-                                    <Label Text="{Binding MaximumPlayerCount}"/>
-                                </StackLayout>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="RequiresPassword:"/>
-                                    <Label Text="{Binding RequiresPassword}"/>
-                                </StackLayout>
-                            </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

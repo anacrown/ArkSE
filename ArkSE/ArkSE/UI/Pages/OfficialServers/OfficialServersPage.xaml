@@ -10,8 +10,25 @@
                 x:Class="ArkSE.UI.Pages.OfficialServers.OfficialServersPage">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding OfficialServers}"
-                  ItemTemplate="{StaticResource OfficialServerObjectViewModelDataTemplate}"
-                  SelectionMode="None" ItemTapped="ListView_OnItemTapped">
+                  SelectionMode="None" ItemTapped="ListView_OnItemTapped"
+                  HasUnevenRows="True" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="officialservers:OfficialServerObjectViewModel">
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding ServerObject.Ip}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding ServerObject.Name}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </ContentPage.Content>
 </pages:BasePage>

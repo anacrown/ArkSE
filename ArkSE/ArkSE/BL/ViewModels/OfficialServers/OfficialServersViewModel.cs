@@ -33,7 +33,10 @@ namespace ArkSE.BL.ViewModels.OfficialServers
                 return;
             }
 
+            ShowLoading();
             var result = await DataServices.OfficialServersDataService.GetOfficialServers(CancellationToken);
+            HideLoading();
+
             OfficialServers = result.Data.Select(serverObject => new OfficialServerObjectViewModel(serverObject));
         }
     }

@@ -7,24 +7,7 @@
              x:Class="ArkSE.App">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="OfficialServerObjectViewModelDataTemplate" x:DataType="officialServers:OfficialServerObjectViewModel">
 
-                <!-- <officialServers:View1/> -->
-
-                <officialServers1:OfficialServerObjectCell />
-
-                <!-- <ViewCell> -->
-                <!--     <ViewCell.View> -->
-                <!--         <StackLayout Orientation="Horizontal"> -->
-                <!--             <Label Text="{Binding Ip}"/> -->
-                <!--             <Label Text="["/> -->
-                <!--             <Label Text="{Binding Name}"/> -->
-                <!--             <Label Text="]"/> -->
-                <!--         </StackLayout> -->
-                <!--     </ViewCell.View> -->
-                <!-- </ViewCell> -->
-
-            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

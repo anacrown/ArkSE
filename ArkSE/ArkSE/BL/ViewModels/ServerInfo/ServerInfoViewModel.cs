@@ -39,10 +39,18 @@ namespace ArkSE.BL.ViewModels.ServerInfo
                 return;
             }
 
+            ShowLoading();
             var result = await DataServices.OfficialServersDataService.GetOfficialGameServerObjects(ServerViewModel.ServerObject, CancellationToken);
+            HideLoading();
 
             if (result.Status == RequestStatus.Ok)
+            {
                 OfficialGameServerObjects = result.Data;
+                if (!OfficialGameServerObjects.Any())
+                {
+                    ShowToast("Failed to find game servers", true);
+                }
+            }
         }
     }
 }
