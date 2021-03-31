@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ArkSE\SourceQuery\SourceQuery.csproj" />
+    <ProjectReference Include="..\SourceQuery\SourceQuery.csproj" />
   </ItemGroup>
 
 </Project>

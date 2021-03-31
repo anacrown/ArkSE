@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ArkSE.DAL\ArkSE.DAL.csproj" />
+    <ProjectReference Include="..\..\SourceQuery\SourceQuery.csproj" />
     <ProjectReference Include="..\SourceQuery\SourceQuery.csproj" />
   </ItemGroup>
 
