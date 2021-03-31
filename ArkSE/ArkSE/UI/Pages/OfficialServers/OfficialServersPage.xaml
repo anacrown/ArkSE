@@ -6,22 +6,24 @@
                 xmlns:officialservers="clr-namespace:ArkSE.BL.ViewModels.OfficialServers"
                 xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
                 xmlns:officialServers="clr-namespace:ArkSE.UI.Pages.OfficialServers;assembly=ArkSE"
+                xmlns:system="clr-namespace:System;assembly=netstandard"
                 x:DataType="officialservers:OfficialServersViewModel"
                 x:Class="ArkSE.UI.Pages.OfficialServers.OfficialServersPage">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding OfficialServers}"
                   SelectionMode="None" ItemTapped="ListView_OnItemTapped"
-                  HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                  HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="3">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="officialservers:OfficialServerObjectViewModel">
+                <DataTemplate x:DataType="dataObjects:OfficialServerObject">
                     <ViewCell>
                         <ViewCell.View>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding ServerObject.Ip}"/>
-                                        <Span Text=" "/>
-                                        <Span Text="{Binding ServerObject.Name}"/>
+                                        <Span FontSize="Body" FontAttributes="Bold" 
+                                              Text="{Binding Name}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="{Binding Ip}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

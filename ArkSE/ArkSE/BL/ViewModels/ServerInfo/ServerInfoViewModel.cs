@@ -10,9 +10,9 @@ namespace ArkSE.BL.ViewModels.ServerInfo
 {
     public class ServerInfoViewModel : BaseViewModel
     {
-        public OfficialServerObjectViewModel ServerViewModel
+        public OfficialServerObject ServerObject
         {
-            get => Get<OfficialServerObjectViewModel>();
+            get => Get<OfficialServerObject>();
             set => Set(value);
         }
 
@@ -25,8 +25,8 @@ namespace ArkSE.BL.ViewModels.ServerInfo
         public override void OnSetNavigationParams(Dictionary<string, object> navigationParams)
         {
             if (navigationParams.TryGetValue("SelectedServer", out var paramValue) &&
-                paramValue is OfficialServerObjectViewModel selectedServer)
-                ServerViewModel = selectedServer;
+                paramValue is OfficialServerObject selectedServer)
+                ServerObject = selectedServer;
 
             base.OnSetNavigationParams(navigationParams);
         }
@@ -40,7 +40,7 @@ namespace ArkSE.BL.ViewModels.ServerInfo
             }
 
             ShowLoading();
-            var result = await DataServices.OfficialServersDataService.GetOfficialGameServerObjects(ServerViewModel.ServerObject, CancellationToken);
+            var result = await DataServices.OfficialServersDataService.GetOfficialGameServerObjects(ServerObject, CancellationToken);
             HideLoading();
 
             if (result.Status == RequestStatus.Ok)
