@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace ArkSE.BL.ViewModels.FavServers
+namespace ArkSE.UI.Pages.FavServers
 {
     public class FavServersViewModel: BaseViewModel
     {
@@ -8,7 +8,7 @@ namespace ArkSE.BL.ViewModels.FavServers
 
         private void ServerInfoCommandImplementation()
         {
-            NavigateTo(Pages.ServerInfo, mode: NavigationMode.Modal);
+            NavigateTo(ArkSE.Pages.DedicatedServersList, mode: NavigationMode.Modal);
         }
     }
 }

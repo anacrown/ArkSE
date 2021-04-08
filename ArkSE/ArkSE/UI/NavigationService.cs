@@ -25,7 +25,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using ArkSE.BL.ViewModels;
 using ArkSE.Helpers;
 using ArkSE.UI.Pages;
 using Xamarin.Forms;

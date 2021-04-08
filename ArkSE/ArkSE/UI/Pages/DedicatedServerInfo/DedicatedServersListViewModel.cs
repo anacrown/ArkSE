@@ -1,15 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ArkSE.BL.ViewModels.OfficialServers;
 using ArkSE.DAL;
 using ArkSE.DAL.DataObjects;
 using ArkSE.DAL.DataServices;
 
-namespace ArkSE.BL.ViewModels.ServerInfo
+namespace ArkSE.UI.Pages.DedicatedServerInfo
 {
-    public class ServerInfoViewModel : BaseViewModel
+    public class DedicatedServerInfoViewModel : BaseViewModel
     {
+        #region Navigate
+
+        public void NavigateToDedicatedServerInfo(OfficialGameServerObject serverObject)
+        {
+            NavigateTo(ArkSE.Pages.DedicatedServerInfo, mode: NavigationMode.Modal, navParams:
+                new Dictionary<string, object>()
+                {
+                    {"SelectedServer", serverObject}
+                });
+        }
+
+        #endregion
+
         public OfficialServerObject ServerObject
         {
             get => Get<OfficialServerObject>();

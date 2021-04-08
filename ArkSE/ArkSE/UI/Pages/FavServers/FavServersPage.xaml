@@ -2,9 +2,9 @@
 <pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
-             xmlns:pages1="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE" 
-             xmlns:favservers="clr-namespace:ArkSE.BL.ViewModels.FavServers" 
-             x:DataType="favservers:FavServersViewModel" 
+             xmlns:pages1="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
+             xmlns:favServers="clr-namespace:ArkSE.UI.Pages.FavServers;assembly=ArkSE"
+             x:DataType="favServers:FavServersViewModel" 
              x:Class="ArkSE.UI.Pages.FavServers.FavServersPage">
     <ContentPage.Content>
         <StackLayout>

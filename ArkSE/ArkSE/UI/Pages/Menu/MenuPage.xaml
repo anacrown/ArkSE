@@ -2,8 +2,8 @@
 <pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
-             xmlns:converters="clr-namespace:ArkSE.UI.Converters;assembly=ArkSE" 
-             xmlns:menu="clr-namespace:ArkSE.BL.ViewModels.Menu" 
+             xmlns:converters="clr-namespace:ArkSE.UI.Converters;assembly=ArkSE"
+             xmlns:menu="clr-namespace:ArkSE.UI.Pages.Menu;assembly=ArkSE"
              x:DataType="menu:MenuViewModel" 
              x:Class="ArkSE.UI.Pages.Menu.MenuPage">
     <ContentPage.Content>

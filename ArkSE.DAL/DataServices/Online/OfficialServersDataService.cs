@@ -7,7 +7,7 @@ using RestSharp;
 using System.Threading;
 using System.Threading.Tasks;
 using ArkSE.DAL.DataObjects;
-using SourceQuery;
+using ArkSE.DAL.SourceQuery;
 
 namespace ArkSE.DAL.DataServices.Online
 {
@@ -65,22 +65,7 @@ namespace ArkSE.DAL.DataServices.Online
                         return new RequestResult<List<OfficialGameServerObject>>(null, RequestStatus.Canceled);
 
                     if (TryCreateServer(serverObject.Ip, port, out var gameServer))
-                        gameServerObjects.Add(new OfficialGameServerObject()
-                        {
-                            Ip = serverObject.Ip,
-                            Port = gameServer.Port,
-                            Name = gameServer.Name,
-                            Map = gameServer.Map,
-                            PlayerCount = gameServer.PlayerCount,
-                            MaximumPlayerCount = gameServer.MaximumPlayerCount,
-                            GameVersion = gameServer.GameVersion,
-                            RequiresPassword = gameServer.RequiresPassword,
-                            OS = gameServer.OS.ToString(),
-                            ServerType = gameServer.ServerType.ToString(),
-                            SpectatorPort = gameServer.SpectatorPort,
-                            SteamId = gameServer.SteamId,
-                            VACSecured = gameServer.VACSecured
-                        });
+                        gameServerObjects.Add(gameServer.GetServerObject());
                 }
 
                 return new RequestResult<List<OfficialGameServerObject>>(gameServerObjects, RequestStatus.Ok);
@@ -92,7 +77,7 @@ namespace ArkSE.DAL.DataServices.Online
         }
 
         private static readonly int[] Ports = { 27015, 27017, 27019, 27021 };
-        
+
         private bool TryCreateServer(string ip, int port, out GameServer gameServer)
         {
             try

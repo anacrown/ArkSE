@@ -2,13 +2,10 @@
 {
     public enum Pages
     {
-        Menu,
-        Login,
-        Profile,
+        DedicatedServerInfo,
+        DedicatedServersList,
         FavServers,
-        ServerInfo,
-        PlayerInfo,
-        OfficialServers,
-        AlarmSettings
+        Login,
+        Menu
     }
 }

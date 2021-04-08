@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sourceQuery="clr-namespace:SourceQuery;assembly=SourceQuery"
-             xmlns:officialServers="clr-namespace:ArkSE.BL.ViewModels.OfficialServers;assembly=ArkSE"
-             xmlns:officialServers1="clr-namespace:ArkSE.UI.Pages.OfficialServers;assembly=ArkSE"
              x:Class="ArkSE.App">
     <Application.Resources>
         <ResourceDictionary>

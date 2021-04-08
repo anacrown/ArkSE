@@ -28,16 +28,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ArkSE.Helpers;
-using ArkSE.UI;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
-namespace ArkSE.BL.ViewModels {
+namespace ArkSE.UI.Pages {
 	public class BaseViewModel : Bindable, IDisposable {
 		readonly CancellationTokenSource _networkTokenSource = new CancellationTokenSource();
 		readonly ConcurrentDictionary<string, ICommand> _cachedCommands = new ConcurrentDictionary<string, ICommand>();
 
-		public Dictionary<string, object> NavigationParams {
+        public Dictionary<string, object> NavigationParams {
 			get => Get<Dictionary<string, object>>();
 			private set {
 				Set(value);

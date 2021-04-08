@@ -22,8 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ArkSE.DAL\ArkSE.DAL.csproj" />
-    <ProjectReference Include="..\..\SourceQuery\SourceQuery.csproj" />
-    <ProjectReference Include="..\SourceQuery\SourceQuery.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,10 +40,10 @@
     <EmbeddedResource Update="UI\Pages\Menu\MenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\Pages\OfficialServers\OfficialServersPage.xaml">
+    <EmbeddedResource Update="UI\Pages\DedicatedServerInfo\DedicatedServerInfoPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\Pages\ServerInfo\ServerInfoPage.xaml">
+    <EmbeddedResource Update="UI\Pages\DedicatedServersList\DedicatedServersListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -54,11 +52,11 @@
     <Compile Update="UI\Pages\FavServers\FavServersPage.xaml.cs">
       <DependentUpon>FavServersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\Pages\OfficialServers\OfficialServersPage.xaml.cs">
-      <DependentUpon>OfficialServersPage.xaml</DependentUpon>
+    <Compile Update="UI\Pages\DedicatedServerInfo\DedicatedServerInfoPage.xaml.cs">
+      <DependentUpon>DedicatedServerInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\Pages\ServerInfo\ServerInfoPage.xaml.cs">
-      <DependentUpon>ServerInfoPage.xaml</DependentUpon>
+    <Compile Update="UI\Pages\DedicatedServersList\DedicatedServersListPage.xaml.cs">
+      <DependentUpon>DedicatedServersListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

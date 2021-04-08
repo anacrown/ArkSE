@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using ArkSE.BL.ViewModels;
 using Xamarin.Forms;
 
 namespace ArkSE.UI.Pages

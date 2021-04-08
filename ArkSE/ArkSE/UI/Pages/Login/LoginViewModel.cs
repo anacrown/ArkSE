@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace ArkSE.BL.ViewModels.Login
+namespace ArkSE.UI.Pages.Login
 {
     public class LoginViewModel: BaseViewModel
     {
@@ -9,7 +9,7 @@ namespace ArkSE.BL.ViewModels.Login
 	    void LoginCommandImplementation()
 	    {
 		    // SettingService.HotelId = "exampleHotelId";
-		    NavigateTo(Pages.FavServers, mode:NavigationMode.Master);
+		    NavigateTo(ArkSE.Pages.FavServers, mode:NavigationMode.Master);
 	    }
     }
 }

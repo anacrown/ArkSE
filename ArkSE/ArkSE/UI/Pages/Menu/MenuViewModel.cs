@@ -1,11 +1,11 @@
 using System.Windows.Input;
 
-namespace ArkSE.BL.ViewModels.Menu
+namespace ArkSE.UI.Pages.Menu
 {
     public class MenuViewModel: BaseViewModel {
-	    public ICommand GoToLoginCommand => MakeMenuCommand(Pages.Login);
-	    public ICommand GoToFavServersCommand => MakeMenuCommand(Pages.FavServers);
-	    public ICommand GoToOfficialServersCommand => MakeMenuCommand(Pages.OfficialServers);
+	    public ICommand GoToLoginCommand => MakeMenuCommand(ArkSE.Pages.Login);
+	    public ICommand GoToFavServersCommand => MakeMenuCommand(ArkSE.Pages.FavServers);
+	    public ICommand GoToOfficialServersCommand => MakeMenuCommand(ArkSE.Pages.DedicatedServersList);
 
 	    // public List<RestaurantsObject> RestaurantItemsSource
 	    // {
@@ -16,7 +16,7 @@ namespace ArkSE.BL.ViewModels.Menu
 			return MakeNavigateToCommand(page, NavigationMode.Master, newNavigationStack: true, withAnimation: false);
 		}
 
-		// protected override async Task LoadDataAsync()
+        // protected override async Task LoadDataAsync()
 		// {
 		// 	var response = await DataServices.Restaurant.GetAllRestaurants(SettingService.HotelId, CancellationToken);
 		// 	if (response.IsValid)

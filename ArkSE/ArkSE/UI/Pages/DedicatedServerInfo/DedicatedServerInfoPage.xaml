@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage x:TypeArguments="dedicatedServerInfo:DedicatedServerInfoViewModel" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
+                xmlns:dataObjects="clr-namespace:ArkSE.DAL.DataObjects;assembly=ArkSE.DAL"
+                xmlns:system="clr-namespace:System;assembly=netstandard"
+                xmlns:dedicatedServerInfo="clr-namespace:ArkSE.UI.Pages.DedicatedServerInfo;assembly=ArkSE"
+                x:DataType="dedicatedServerInfo:DedicatedServerInfoViewModel"
+                x:Class="ArkSE.UI.Pages.DedicatedServerInfo.DedicatedServerInfoPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label FontSize="Body" FontAttributes="Bold">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding ServerObject.Ip}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding ServerObject.Name}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <ListView ItemsSource="{Binding OfficialGameServerObjects}"
+                      SelectionMode="None" ItemTapped="ListView_OnItemTapped"
+                      HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="dataObjects:OfficialGameServerObject">
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="Map: "/>
+                                            <Span Text="{Binding Map}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="PlayerCount: "/>
+                                            <Span Text="{Binding PlayerCount}"/>
+                                            <Span Text="/"/>
+                                            <Span Text="{Binding MaximumPlayerCount}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="RequiresPassword: "/>
+                                            <Span Text="{Binding RequiresPassword}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="OS: "/>
+                                            <Span Text="{Binding OS}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="ServerType: "/>
+                                            <Span Text="{Binding ServerType}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                                            <Span Text="SteamId: "/>
+                                            <Span Text="{Binding SteamId}"/>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:BasePage>

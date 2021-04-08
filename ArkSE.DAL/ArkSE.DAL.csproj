@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,16 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="RestSharp" Version="105.2.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="SharpZipLib.NETStandard" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Resources\Mock\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ArkSE\SourceQuery\SourceQuery.csproj" />
-    <ProjectReference Include="..\SourceQuery\SourceQuery.csproj" />
   </ItemGroup>
 
 </Project>
