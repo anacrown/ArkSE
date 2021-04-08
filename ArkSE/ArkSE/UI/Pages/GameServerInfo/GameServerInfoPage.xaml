@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage x:TypeArguments="gameServerInfo:GameServerInfoViewModel" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:ArkSE.UI.Pages;assembly=ArkSE"
+                xmlns:gameServerInfo="clr-namespace:ArkSE.UI.Pages.GameServerInfo;assembly=ArkSE"
+                xmlns:system="clr-namespace:System;assembly=netstandard"
+                x:DataType="gameServerInfo:GameServerInfoViewModel"
+                x:Class="ArkSE.UI.Pages.GameServerInfo.GameServerInfoPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding GameServerObject.Name}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="Map: "/>
+                        <Span Text="{Binding GameServerObject.Map}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="PlayerCount: "/>
+                        <Span Text="{Binding GameServerObject.PlayerCount}"/>
+                        <Span Text="/"/>
+                        <Span Text="{Binding GameServerObject.MaximumPlayerCount}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="RequiresPassword: "/>
+                        <Span Text="{Binding GameServerObject.RequiresPassword}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="OS: "/>
+                        <Span Text="{Binding GameServerObject.OS}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="ServerType: "/>
+                        <Span Text="{Binding GameServerObject.ServerType}"/>
+                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                        <Span Text="SteamId: "/>
+                        <Span Text="{Binding GameServerObject.SteamId}"/>
+
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Command="{Binding AddToFavoriteCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:BasePage>

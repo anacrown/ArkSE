@@ -31,6 +31,7 @@ namespace ArkSE.DAL.SourceQuery
         private byte[] _challengeBytes;
 
         public byte NetworkVersion;
+        public bool Online { get; set; }
         public string Name { get; set; }
         public string Map { get; set; }
         public string GameDirectory;
@@ -55,7 +56,6 @@ namespace ArkSE.DAL.SourceQuery
         public List<PlayerInfo> Players { get; set; }
         public Dictionary<string, string> Rules { get; set; }
         public string Endpoint { get; set; }
-        public bool Visible { get; set; }
 
         public GameServer()
         {
@@ -74,24 +74,37 @@ namespace ArkSE.DAL.SourceQuery
             _endpoint = endpoint;
             Endpoint = endpoint.ToString();
 
-            var sw = new Stopwatch();
-
-            using (_client = new UdpClient())
+            try
             {
-                _client.Client.SendTimeout = (int)500;
-                _client.Client.ReceiveTimeout = (int)500;  
+                using (_client = new UdpClient())
+                {
+                    _client.Client.SendTimeout = (int)500;
+                    _client.Client.ReceiveTimeout = (int)500;  
 
-                sw.Start();
-                _client.Connect(endpoint);
-                RefreshMainInfo();
-                RefreshPlayerInfo();
-                RefreshRules();
-                sw.Stop();
-                Ping = (int)(sw.Elapsed.TotalMilliseconds / 2);
+                    _client.Connect(endpoint);
+                    RefreshMainInfo();
+                    RefreshPlayerInfo();
+                    RefreshRules();
+                }
+                _client = null;
+                Online = true;
             }
-            _client = null;
+            catch (Exception e)
+            {
+                Online = false;
+                Name = "Offline";
+            }
         }
 
+        public static GameServer Create(string address)
+        {
+            var addressParts = address.Split(':');
+            var gs = addressParts.Length == 1
+                ? new GameServer(IPAddress.Parse(address))
+                : new GameServer(new IPEndPoint(IPAddress.Parse(addressParts[0]),
+                    int.Parse(addressParts[1])));
+            return gs;
+        }
         public override string ToString() => $"{Name} [{Map}] {PlayerCount}/{MaximumPlayerCount}";
 
         public void RefreshMainInfo()

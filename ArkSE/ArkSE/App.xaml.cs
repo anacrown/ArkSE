@@ -1,4 +1,6 @@
-﻿using ArkSE.DAL.DataServices;
+﻿using ArkSE.DAL.DataObjects;
+using ArkSE.DAL.DataServices;
+using ArkSE.DAL.SourceQuery;
 using ArkSE.Helpers;
 using ArkSE.UI;
 using Xamarin.Forms;

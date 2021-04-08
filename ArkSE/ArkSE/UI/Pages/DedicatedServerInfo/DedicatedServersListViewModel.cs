@@ -11,9 +11,9 @@ namespace ArkSE.UI.Pages.DedicatedServerInfo
     {
         #region Navigate
 
-        public void NavigateToDedicatedServerInfo(OfficialGameServerObject serverObject)
+        public void NavigateToGameServerInfo(OfficialGameServerObject serverObject)
         {
-            NavigateTo(ArkSE.Pages.DedicatedServerInfo, mode: NavigationMode.Modal, navParams:
+            NavigateTo(ArkSE.Pages.GameServerInfo, mode: NavigationMode.Modal, navParams:
                 new Dictionary<string, object>()
                 {
                     {"SelectedServer", serverObject}

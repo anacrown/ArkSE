@@ -5,6 +5,7 @@
         DedicatedServerInfo,
         DedicatedServersList,
         FavServers,
+        GameServerInfo,
         Login,
         Menu
     }

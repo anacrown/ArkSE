@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ArkSE.DAL.DataObjects;
+using ArkSE.DAL.SourceQuery;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ArkSE.Helpers
@@ -20,17 +23,28 @@ namespace ArkSE.Helpers
 			_settingsFunc = ()=> app.Properties;
 			_saveFunc = app.SavePropertiesAsync;
 
-			FavServers ??= new ObservableCollection<OfficialServerObject>();
+            if (Preferences.ContainsKey(nameof(Addreses)))
+                Addreses = Preferences.Get(nameof(Addreses), null)?.Split(';').ToList();
+
+			Addreses ??= new List<string>();
+
+            FavServers = new ObservableCollection<OfficialGameServerObject>(Addreses.Select(address => GameServer.Create(address).GetServerObject()));
 
             FavServers.CollectionChanged += (sender, args) =>
+            {
+                Addreses = FavServers.Select(gs => $"{gs.Ip}:{gs.Port}").ToList();
+				Preferences.Set(nameof(Addreses), string.Join(";", Addreses));
                 Set(FavServers, nameof(FavServers));
+            };
         }
 
-		public static ObservableCollection<OfficialServerObject> FavServers
+		public static ObservableCollection<OfficialGameServerObject> FavServers
 		{
-			get => Get<ObservableCollection<OfficialServerObject>>();
+			get => Get<ObservableCollection<OfficialGameServerObject>>();
 			set => Set(value);
 		}
+
+        private static List<string> Addreses;
 
 		#region Internal
 
@@ -39,8 +53,7 @@ namespace ArkSE.Helpers
 			lock (Locker)
 			{
 				var settings = Settings;
-				if (settings.TryGetValue(key, out var value))
-
+                if (settings.TryGetValue(key, out var value))
 					if (value is T typedValue) return typedValue;
 
 				return default;

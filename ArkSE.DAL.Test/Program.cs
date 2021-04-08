@@ -11,18 +11,11 @@ namespace ArkSE.DAL.Test
     {
         static void Main(string[] args)
         {
-            var address = "46.251.238.159:27017";
-
-            var addressParts = address.Split(':');
-
             while (true)
             {
                 try
                 {
-                    var gs = addressParts.Length == 1
-                        ? new GameServer(IPAddress.Parse(address))
-                        : new GameServer(new IPEndPoint(IPAddress.Parse(addressParts[0]),
-                            int.Parse(addressParts[1])));
+                    var gs = GameServer.Create("46.251.238.159:27017");
 
                     Console.WriteLine(gs);
                 }

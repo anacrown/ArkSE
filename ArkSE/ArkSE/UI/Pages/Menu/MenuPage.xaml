@@ -12,6 +12,7 @@
             <Button Text="Login" Command="{Binding GoToLoginCommand}"/>
             <Button Text="FavServers" Command="{Binding GoToFavServersCommand}"/>
             <Button Text="OfficialServers" Command="{Binding GoToOfficialServersCommand}"/>
+            <Button Text="Add server 46.251.238.159:27017 to Favorite" Command="{Binding AddServerToFavorite}"/>
         </StackLayout>
     </ContentPage.Content>
 </pages:BasePage>

@@ -14,7 +14,7 @@ namespace ArkSE.UI.Pages.DedicatedServerInfo
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is OfficialGameServerObject gameServerObject)
-                ViewModel.NavigateToDedicatedServerInfo(gameServerObject);
+                ViewModel.NavigateToGameServerInfo(gameServerObject);
         }
     }
 }
